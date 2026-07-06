@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      // Safeguard against platform-level fetch override TypeError in AI Studio iframe
+      (function() {
+        try {
+          var target = typeof window !== 'undefined' ? window : typeof globalThis !== 'undefined' ? globalThis : null;
+          if (target && 'fetch' in target) {
+            var originalFetch = target.fetch;
+            Object.defineProperty(target, 'fetch', {
+              configurable: true,
+              enumerable: true,
+              get: function() {
+                return originalFetch;
+              },
+              set: function(val) {
+                console.warn("Fetch assignment prevented to avoid getter-only TypeError:", val);
+              }
+            });
+          }
+        } catch (e) {
+          console.warn("Failed to set fetch safeguard:", e);
+        }
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Google AI Studio App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

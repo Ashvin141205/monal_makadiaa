@@ -1,0 +1,6 @@
+{
+  "name": "Kirit Corporation",
+  "description": "Kirit Corporation & UV Seeds - Gujarat's trusted brand in Groundnut Cleaning, Processing, Grading, and Premium Groundnut Seed (Biyaran) solutions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
